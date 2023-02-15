@@ -16,9 +16,22 @@ export const createProductController = async (req: Request, res: Response) => {
 
 export const getProductListController = async (req: Request, res: Response) => {
   try {
-    const productList = await ProductServices.getProductList()
-    res.status(200).json(productList)
+    const productList = await ProductServices.getProductList();
+    res.status(200).json(productList);
   } catch (err) {
-    res.status(404).json('Products not found')
+    res.status(404).json('Products not found');
+  }
+};
+
+export const deleteProductByIdController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const productId = req.params.id;
+    const deleteProduct = await ProductServices.deleteProductById(productId)
+    res.status(200).json(deleteProduct)
+  } catch (err) {
+    res.status(404).json('No product by this id');
   }
 };
