@@ -17,8 +17,16 @@ const deleteProductById = async (
   return Product.findByIdAndDelete(id);
 };
 
-const updateProductById =async (id:string, update:ProductDocument):Promise<ProductDocument | null> => {
-    return Product.findByIdAndUpdate(id, update)
-}
+const updateProductById = async (
+  id: string,
+  update: ProductDocument
+): Promise<ProductDocument | null> => {
+  return Product.findByIdAndUpdate(id, update);
+};
 
-export default { createProduct, getProductList, deleteProductById, updateProductById };
+export default {
+  createProduct,
+  getProductList,
+  deleteProductById,
+  updateProductById,
+};
