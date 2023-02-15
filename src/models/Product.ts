@@ -1,17 +1,17 @@
 // product model here
-import mongoose, {Document} from 'mongoose'
+import mongoose, { Document } from 'mongoose';
 
 export type ProductDocument = Document & {
-    name: string;
-}
+  name: string;
+};
 
-const Schema = mongoose.Schema
+const Schema = mongoose.Schema;
 
 const ProductSchema = new Schema({
-    name: {
-        type: String,
-        required: true
-    }
-})
+  name: {
+    type: String,
+    required: true,
+  },
+});
 
-export default mongoose.model<ProductDocument>('Product', ProductSchema)
+export default mongoose.model<ProductDocument>('Product', ProductSchema);
