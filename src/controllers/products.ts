@@ -35,3 +35,13 @@ export const deleteProductByIdController = async (
     res.status(404).json('No product by this id');
   }
 };
+
+export const updateProductByIdController =async (req: Request, res: Response) => {
+    try {
+        const productId = req.params.id
+        const updateProduct = await ProductServices.updateProductById(productId, req.body)
+        res.status(200).json(updateProduct)
+        
+    } catch(err){res.status(404).json('Cannot find the product by this id')}
+    
+}
