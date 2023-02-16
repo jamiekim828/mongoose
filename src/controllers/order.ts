@@ -37,8 +37,17 @@ export const deleteOrderByIdController = async (
   try {
     const orderId = req.params.id;
     const deleteOrder = await OrderServices.deleteOrderById(orderId);
-    res.status(200).json('deleteOrder' + deleteOrder);
+    res.status(200).json({ deleteOrder });
   } catch (err) {
     res.status(404).json('Order not found by id');
+  }
+};
+
+export const getOrdersController = async (req: Request, res: Response) => {
+  try {
+    const orders = await OrderServices.getOrders();
+    res.status(200).json({ orders });
+  } catch (err) {
+    res.status(404).json('Orders are not found');
   }
 };

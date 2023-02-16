@@ -15,4 +15,8 @@ const deleteOrderById = async (id: string): Promise<OrderDocument | null> => {
   return Order.findByIdAndDelete(id);
 };
 
-export default { createOrder, updateOrderById, deleteOrderById };
+const getOrders = async (): Promise<OrderDocument[]> => {
+  return Order.find();
+};
+
+export default { createOrder, updateOrderById, deleteOrderById, getOrders };
