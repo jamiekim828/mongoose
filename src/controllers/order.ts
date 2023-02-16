@@ -29,3 +29,16 @@ export const updateOrderByIdController = async (
     res.status(404).json('Order not found');
   }
 };
+
+export const deleteOrderByIdController = async (
+  req: Request,
+  res: Response
+) => {
+  try {
+    const orderId = req.params.id;
+    const deleteOrder = await OrderServices.deleteOrderById(orderId);
+    res.status(200).json('deleteOrder' + deleteOrder);
+  } catch (err) {
+    res.status(404).json('Order not found by id');
+  }
+};
