@@ -6,12 +6,12 @@ export type ProductDocument = Document & {
 };
 
 const Schema = mongoose.Schema;
-
 const ProductSchema = new Schema({
   name: {
     type: String,
     required: true,
   },
+  toppings: []
 });
 
 export default mongoose.model<ProductDocument>('Product', ProductSchema);

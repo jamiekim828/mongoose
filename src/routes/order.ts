@@ -9,7 +9,7 @@ import {
 
 const router = Router();
 
-router.post('/', createOrderController);
+router.post('/:userId', createOrderController);
 router.put('/:id', updateOrderByIdController);
 router.delete('/:id', deleteOrderByIdController)
 router.get('/', getOrdersController)

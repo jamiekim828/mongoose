@@ -6,12 +6,11 @@ import OrderServices from '../services/order';
 export const createOrderController = async (req: Request, res: Response) => {
   try {
     const newOrder = new Order({
-      name: req.body.name,
-      quantity: req.body.quantity,
-      price: req.body.price,
+      userId: req.params.userId,
+      productOrder: req.body.product
     });
-    OrderServices.createOrder(newOrder);
-    res.status(200).json(newOrder);
+    const order = OrderServices.createOrder(newOrder);
+    res.status(200).json(order);
   } catch (err) {
     res.status(404).json('Order cannot be created');
   }
