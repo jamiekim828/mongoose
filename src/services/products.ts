@@ -1,3 +1,4 @@
+import { trusted } from 'mongoose';
 import Product, { ProductDocument } from '../models/Product';
 
 // product services here - logic to communicate with database
@@ -19,9 +20,9 @@ const deleteProductById = async (
 
 const updateProductById = async (
   id: string,
-  update: ProductDocument
+  update: Partial<ProductDocument>
 ): Promise<ProductDocument | null> => {
-  return Product.findByIdAndUpdate(id, update);
+  return Product.findByIdAndUpdate(id, update, {new: true});
 };
 
 export default {

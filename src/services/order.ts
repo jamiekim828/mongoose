@@ -6,9 +6,9 @@ const createOrder = async (order: OrderDocument): Promise<OrderDocument> => {
 
 const updateOrderById = async (
   id: string,
-  update: OrderDocument
+  update: Partial<OrderDocument>
 ): Promise<OrderDocument | null> => {
-  return Order.findByIdAndUpdate(id, update);
+  return Order.findByIdAndUpdate(id, update, { new: true });
 };
 
 const deleteOrderById = async (id: string): Promise<OrderDocument | null> => {
@@ -19,4 +19,9 @@ const getOrders = async (): Promise<OrderDocument[]> => {
   return Order.find();
 };
 
-export default { createOrder, updateOrderById, deleteOrderById, getOrders };
+const getOrderByUserId = async (
+  userIdFromRequest: string
+): Promise<OrderDocument[]> => {
+  return Order.find({ userId: userIdFromRequest });
+};
+export default { createOrder, updateOrderById, deleteOrderById, getOrders, getOrderByUserId };
